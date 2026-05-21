@@ -1,1 +1,1 @@
-# galllery-k0
+# gallery-k0
