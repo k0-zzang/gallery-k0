@@ -3,15 +3,15 @@ locals {
   project   = "lab01"
   namespace = "${local.org}-${local.project}"
 
-  github_repo = "k0-zzang/tf-core"
+  github_repo = "k0-zzang/gallery-k0"
 
   iamrole = {
-    name       = "gha"
+    name       = "pky"
     policy_arn = data.aws_iam_policy.admin_access.arn
   }
 
   iamoidcp = {
-    name            = "gha"
+    name            = "pky"
     url             = "https://token.actions.githubusercontent.com"
     client_id_list  = ["sts.amazonaws.com"]
     thumbprint_list = ["ffffffffffffffffffffffffffffffffffffffff"]
