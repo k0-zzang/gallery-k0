@@ -1,16 +1,16 @@
 locals {
-  org = "tf-core"
-  project = "lab02"
+  org         = "tf-core"
+  project     = "lab02"
   environment = terraform.workspace
-  
+
   iamrole = {
     name = "instance"
 
     assume_role_policy = jsonencode({
-      Version   = "2012-10-17"
+      Version = "2012-10-17"
       Statement = [{
-        Action  = "sts:AssumeRole"
-        Effect  = "Allow"
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
 
         Principal = {
           Service = "ec2.amazonaws.com"
@@ -18,7 +18,7 @@ locals {
       }]
     })
 
-    policy_arn         = data.aws_iam_policy.aws_ssm_core.arn
+    policy_arn = data.aws_iam_policy.aws_ssm_core.arn
   }
 
   instance = {

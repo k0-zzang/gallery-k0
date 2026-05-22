@@ -1,3 +1,3 @@
 output "infra" {
-    value = local.infra
+  value = local.infra
 }

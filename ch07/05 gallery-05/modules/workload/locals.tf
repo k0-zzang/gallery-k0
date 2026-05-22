@@ -6,17 +6,17 @@ locals {
   asg = {
     name = "web"
 
-    min_size = var.asg_min_size
-    max_size = var.asg_max_size
+    min_size         = var.asg_min_size
+    max_size         = var.asg_max_size
     desired_capacity = var.asg_desired_capacity
 
     vpc_zone_identifier = var.asg_vpc_zone_identifier
-    target_group_arns = var.asg_target_group_arns
+    target_group_arns   = var.asg_target_group_arns
 
     health_check_type         = "ELB" #ELB가 사용하는 Health Check를 나도 사용하겠다.
     health_check_grace_period = 600
 
-    deploy_version = var.asg_deploy_version 
+    deploy_version = var.asg_deploy_version
     #여기 바꾸고, 태그 수정해야지 바뀜.
   }
 
@@ -24,7 +24,7 @@ locals {
   lt = {
     name = "web"
 
-    image_id = data.aws_ami.amazon_linux.id
+    image_id      = data.aws_ami.amazon_linux.id
     instance_type = var.lt_instance_type
 
     iam_instance_profile = {
@@ -32,13 +32,13 @@ locals {
     }
 
     user_data = base64encode(templatefile("${path.module}/templates/user_data.sh.tpl", {
-      profile =  "dev"
+      profile     = "dev"
       server_port = var.lt_service_port
     }))
 
     allow_access = {
-      port = var.lt_service_port
-      cidr_blocks = var.lt_allow_access_cidr_blocks  
-    }  
+      port        = var.lt_service_port
+      cidr_blocks = var.lt_allow_access_cidr_blocks
+    }
   }
 }
