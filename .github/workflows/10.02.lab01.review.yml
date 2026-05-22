@@ -38,11 +38,12 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
  
       - name: Terraform Init
-        run: terraform init # -backend=false 이건 백엔드안할때
+        run: terraform init -backend-config="env.dev.backend.hcl" # [수정] 외부 백엔드 설정 파일 주입하도록 변경
       
+      # [수정] 요구사항에 맞는 plan 옵션 추가 (-no-color, -var-file)
       - name: Terraform Plan
         id: plan
-        run: terraform plan -input=false
+        run: terraform plan -input=false -no-color -var-file="env.dev.tfvars"
         continue-on-error: true
 
       - name: Post Plan to PR

@@ -3,7 +3,7 @@ name: "10.02.lab01 deploy"
 on:
   push:
     branches: [main]
-    paths: ["ch10/01/lab01/infra/*.tf"]
+    paths: ["ch10/01/lab01/infra/*.tf", "ch10/01/lab01/infra/*.tfvars"]
 
 permissions:
   contents: read
@@ -40,9 +40,11 @@ jobs:
           role-to-assume: ${{ secrets.AWS_IAMROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
+      # [수정] 외부 백엔드 설정 파일(hcl) 주입
       - name: Terraform Init
-        run: terraform init -input=false
+        run: terraform init -input=false -backend-config="env.dev.backend.hcl"
 
+      # [수정] 배포 시 변수 파일(tfvars) 주입
       - name: Terraform Apply
-        run: terraform apply -input=false -auto-approve
+        run: terraform apply -input=false -auto-approve -var-file="env.dev.tfvars"
     # 변수가 없는 인프라라 input 없어도 괜찮음
