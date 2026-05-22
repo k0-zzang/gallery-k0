@@ -31,9 +31,9 @@ locals {
         enabled             = true
         port                = var.lb_target_group_port
         protocol            = "HTTP"
-        path                = "/actuator/health"  #참조.
-        healthy_threshold   = 3   #3번 성공
-        unhealthy_threshold = 3   #3번 실패
+        path                = "/actuator/health" #참조.
+        healthy_threshold   = 3                  #3번 성공
+        unhealthy_threshold = 3                  #3번 실패
         timeout             = 5
         interval            = 30
       }

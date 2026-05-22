@@ -3,30 +3,30 @@ variable "env" {
 }
 
 variable "infra_lb_listener_port" {
-    type = number
+  type = number
 }
 
 variable "infra_lt_service_port" {
-    type = number
-    default = 1
+  type    = number
+  default = 1
 }
 
 variable "infra_lt_instance_type" {
-    type = string
+  type = string
 }
 
 variable "infra_asg_max_size" {
-    type = number
+  type = number
 }
 
 variable "infra_asg_min_size" {
-    type = number
+  type = number
 }
 
 variable "infra_asg_desired_capacity" {
-    type = number
+  type = number
 }
 
 variable "infra_asg_deploy_version" {
-    type = string
+  type = string
 }

@@ -1,7 +1,7 @@
 locals {
-    org = "tf-core"
-    project = "lab01"
-    environment = terraform.workspace
+  org         = "tf-core"
+  project     = "lab01"
+  environment = terraform.workspace
 
-    namespace = "${local.org}-${local.project}-${local.environment}"
+  namespace = "${local.org}-${local.project}-${local.environment}"
 }

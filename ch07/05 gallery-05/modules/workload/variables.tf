@@ -7,7 +7,7 @@ variable "vpc_id" {
 }
 
 variable "asg_vpc_zone_identifier" {
-  type = list(string)  
+  type = list(string)
 }
 
 variable "asg_target_group_arns" {
@@ -35,7 +35,7 @@ variable "lt_instance_type" {
 }
 
 variable "lt_iam_instance_profile_name" {
-  type = string 
+  type = string
 }
 
 variable "lt_allow_access_cidr_blocks" {
@@ -43,5 +43,5 @@ variable "lt_allow_access_cidr_blocks" {
 }
 
 variable "lt_service_port" {
-  type = number  
+  type = number
 }

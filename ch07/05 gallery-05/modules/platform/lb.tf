@@ -2,10 +2,10 @@ resource "aws_lb" "this" {
   name = "${local.namespace}-lb-${local.lb.name}"
 
   load_balancer_type = local.lb.load_balancer_type
-  internal = local.lb.internal
-  subnets = local.lb.subnets
-  security_groups =  [aws_security_group.this.id]
-  }
+  internal           = local.lb.internal
+  subnets            = local.lb.subnets
+  security_groups    = [aws_security_group.this.id]
+}
 
 
 resource "aws_lb_listener" "this" {
@@ -47,10 +47,10 @@ resource "aws_lb_target_group" "this" {
 
 
 
-  resource "aws_security_group" "this" {
-    name ="${local.namespace}-sg-lb-${local.lb.name}"
+resource "aws_security_group" "this" {
+  name = "${local.namespace}-sg-lb-${local.lb.name}"
 
-    vpc_id = local.vpc_id
+  vpc_id = local.vpc_id
 
   ingress {
     to_port     = local.lb.listener.port
@@ -69,4 +69,4 @@ resource "aws_lb_target_group" "this" {
   tags = {
     Name = "${local.namespace}-sg-lb-${local.lb.name}"
   }
-  }
+}
